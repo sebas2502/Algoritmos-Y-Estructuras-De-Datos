@@ -1,0 +1,29 @@
+Se dispone de una secuencia de números de socios, y se desea saber la cantidad de socios que están 
+registrados.
+
+ACCION EJ-3_Es
+
+    AMBIENTE
+     
+    VAR 
+
+       sec : secuencia de entero;
+       v , cont : entero;   
+
+
+    PROCESO
+
+        arr(sec); avz(sec , v); cont := 0;
+
+        MIENTRAS NFDS (sec) HACER
+          
+          cont := cont + 1;
+          avz(sec , v);
+
+          FIN MIENTRAS
+
+      FIN PROCESO
+
+      cerrar(sec);  
+
+FIN ACCION

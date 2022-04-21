@@ -1,0 +1,33 @@
+Se dispone de una secuencia de caracteres y se desea obtener una secuencia de salida que resulte de copiar la 
+secuencia de entrada, descartando el caracter "$"
+
+ACCION EJ-4_Es
+
+  AMBIENTE
+   
+  VAR 
+
+  sec , sal : secuencia de caracteres;  
+  v : caracter;
+
+  PROCESO
+        
+    arr(sec); avz(sec , v); crear(sal);
+
+    MIENTRAS NFDS (sec) HACER 
+
+      SI (v <> '$') ENTONCES
+              
+        ESCRIBIR(sal , v);
+              
+        FIN SI
+
+      avz(sec , v);  
+
+     FIN MIENTRAS
+
+   FIN PROCESO
+
+  cerrar(sal); 
+
+ FIN ACCION

@@ -1,0 +1,63 @@
+Dada una secuencia de enteros que almacena la cantidad de habitantes de las ciudades capitales de las 23 
+provincias de la República Argentina, discriminados 4 categorías: menores de 18 años (varones y mujeres) y mayores 
+de 18 años (varones y mujeres). Se pide determinar la población total y los siguientes porcentajes: masculinos, 
+femeninos, mayores de 18 y menores de 18.
+
+		
+		  mm   mf	MM   MF
+EJEMPLO: 4212 1233 1232 3236  /* 
+								Los espacios en blanco no forman parte de la secuencia, solo es para 
+							  	apreciar mejor las categorias y la forma en la que está estructurada
+							  	esta secuencia.
+							  	mm : Menores de 18 años masculinos
+							  	mf : Menores de 18 años femeninos
+							  	MM : Mayores de 18 años masculinos
+							  	MF : Mayores de 18 años Femeninos
+							  */
+
+
+
+ACCION EJ-7_Es
+
+	AMBIENTE
+
+		VAR
+
+		sec : secuencia de caracteres;
+		v : caracter;
+		men_m , men_f , may_m , men_f , tot : entero; 
+
+	PROCESO
+
+		arr(sec); avz(sec , v); men_m := 0 , men_f := 0 , may_m := 0 , men_f := 0 , tot := 0;
+
+		PARA (i:=1 HASTA 23) HACER 				//Como conocemos la longitud de la secuencia, usamos el PARA
+
+			men_m := men_m + v;
+			avz(sec , v);
+
+			men_f := men_f + v;
+			avz(sec , v); 
+
+			may_m := may_m + v;
+			avz(sec , v);
+
+			men_f := men_f + v;
+			avz(sec , v);
+
+			tot := tot + men_m + men_f + may_m + men_f;
+
+
+
+	     FIN PARA
+
+	     ESC("Poblacion total: ", tot);
+	     ESC("Porcentaje de poblacion masculina: ", ( (men_m + may_m) / tot ) * 100 );
+	     ESC("Porcentaje de poblacion femenina: ",  ( (men_f + may_f) / tot ) * 100 );
+	     ESC("Porcentaje de poblacion de menores de 18 años: ", ( (men_f + may_m) / tot ) * 100 );
+	     ESC("Porcentaje de poblacion de mayores de 18 años: ", ( (may_f + may_m) / tot ) * 100 );		
+
+
+	 FIN PROCESO	
+
+ FIN ACCION							  

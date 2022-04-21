@@ -1,0 +1,35 @@
+Dada una secuencia de letras del alfabeto que finaliza con la letra "Z", contar cuantas consonantes hay en la 
+secuencia.
+
+ACCION EJ-2_Es
+
+
+   AMBIENTE
+        
+    VAR
+      sec : secuencia de caracteres;
+      v : caracter;
+      cont : entero;
+      voc = {'A','E','I','O','U','a','e','i','o','u'};
+
+
+  PROCESO
+
+    //Arrancamos la secuencia y avanzamos al primer caracter dentro de ella.
+    //Inicializamos el contador a cero
+    arr(sec); cont:=0;
+    
+    REPTETIR       //SECUENCIA PURA
+      avz(sec , v);
+      SI ( v NO EN voc ) ENTONCES 
+        cont := cont + 1; 
+      FIN SI
+
+      avz(sec , v);
+
+      HASTA QUE ( v = 'Z' )
+
+
+    FIN PROCESO
+
+  FIN ACCION
