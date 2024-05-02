@@ -1,15 +1,11 @@
 Dada una secuencia de letras del alfabeto que finaliza con una marca '*', contar cuantas letras "A" hay en la secuencia. 
 
 ACCION EJ-1_Es
- 
-   AMBIENTE
 
+AMBIENTE
       sec : secuencia de caracteres;
       v : caracter;
       cont : entero;
-
-
-
 
       PROCESO
       
