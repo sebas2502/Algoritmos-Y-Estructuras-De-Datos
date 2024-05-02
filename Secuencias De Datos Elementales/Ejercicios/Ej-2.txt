@@ -27,6 +27,7 @@ ACCION EJ-2_Es
 
       HASTA QUE ( v = 'Z' )
 
+      ESCRIBIR("La cantidad de consonantes en la secuencia es de: " , cont);
 
     FIN PROCESO
 
