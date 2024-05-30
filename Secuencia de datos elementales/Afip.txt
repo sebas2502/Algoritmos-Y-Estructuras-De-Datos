@@ -1,0 +1,126 @@
+La AFIP dispone de dos secuencias de caracteres:
+
+PERSONAS: Contiene los siguientes datos de personas físicas o Empresas: nombre completo y fecha (de nacimiento o de creación, respectivamente), agrupadas por provincias. No existe carácter separador entre personas, el fin de cada provincia se indica con el carácter &.
+Ejemplo: María Góm-14021977Carlos Alberto Rodriguez-20061990....&Lionel Messi-24061987....&....{fin} nombre-ddmmaaaanombre-ddmmaa....&
+
+CUIT: contiene la Clave Unica de Identificación Tributaria de las personas de la secuencia PERSONAS (existiendo una correspondencia una a una, es decir la primer persona con el primer cuit, la segunda con el segundo y asi sucesivamente) Cada número de CUIT se almacena por medio de 11 caracteres: los 2 primeros indican el tipo, los 6 siguientes el número de DNI (en caso de personas físicas) o de sociedad (en caso de Empresas) y el último es un digito verificador.
+Ejemplo: **20123456786**23134567823**30712434445**
+
+Los tipos pueden ser:20, 23, 24 y 27 para Personas Físicas y 30, 33 y 34 para Empresas.
+
+Se solicita.
+
+1 - Generar una secuencia de salida que contenga DNI, y el nombre completo de todas las personas físicas cuyo nombre comience con vocal.
+2 -Para cada Provincia calcular el total de personas físicas y el porcentaje sobre el total de la provincia.
+
+ACCION AFIP_ES
+ 	
+	AMBIENTE
+
+	 VAR
+
+	 	personas , cuit , salida : secuencia de caracteres;
+
+	 	p , c : caracter;
+
+	 	totProv , contP , porc : real(3,2);
+
+	 	voc : ('A' , 'E' , 'I' , 'O' , 'U' , 'a' , 'e' , 'i' , 'o' , 'u');
+
+
+	ALGORITMO
+
+		ARR(perosnas); ARR(cuit); AVZ(personas , p); AVZ(cuit , c); cont := 0; porc := 0; CREAR(salida);
+
+
+		MIENTRAS NFDS(personas) HACER
+
+			MIENTRAS NFDS(personas) ^ (p <> '&') HACER
+
+				 
+				SI (c = '2') ^ (p EN voc) ENTONCES
+
+					contP := contP + 1;	totProv := totProv + 1; 
+					AVZ(cuit , c);
+					AVZ(cuit , c);
+
+					PARA (i := 1  HASTA 8) HACER
+
+						ESC(salida , c);
+						AVZ(cuit , c);
+
+					 FIN PARA 
+					 													María Góm-14021977Carlos Alberto Rodriguez-20061990Augusto Suarez-25031985&*
+					AVZ(cuit , c); AVZ(cuit , c);
+
+					MIENTRAS (p <> '-') HACER							20402633043 24587122258 22587592581*
+						
+						ESC(salida , p);								contP =   totP = 
+						AVZ(personas , p); 
+
+					 FIN MIENTRAS
+
+				    AVZ(personas , p);
+
+				    PARA (i:=1 HASTA 9) HACER
+				    	AVZ(personas , p);
+				     FIN PARA
+
+				 SINO
+
+				 	SI (c = '2') ENTONCES
+				 		contP := contP + 1;
+				 	 FIN SI
+
+				 	totProv := totProv + 1;
+
+				 	MIENTRAS (p <> '-') HACER
+				 		AVZ(personas , p);
+				 	 FIN MIENTRAS
+
+				 	 AVZ(personas , p)
+
+				 	PARA (i := 1 HASTA 9) HACER
+				 		AVZ(personas , p);
+				 	 FIN PARA
+
+				    PARA (i := 1 HASTA 12) HACER
+				    	AVZ(cuit , c);
+				 	 FIN PARA
+
+
+				 	
+
+				 	 
+
+				 FIN SI
+
+
+			 FIN MIENTRAS
+
+			SI NFDS(personas ) ^ (p = '&') ENTONCES
+
+			 	porc := (contP * 100) / totProv;
+			 	ESCRIBIR("Total de personas fisicas en la provincia : " , contP);
+			 	ESCRIBIR("Porcentaje de personas fisicas sobre el total de la provincia : " , porc);
+
+			 	porc := 0; contP := 0; totProv := 0;
+
+			 	AVZ(personas , p);
+			 
+			 FIN SI 
+
+		 FIN MIENTRAS
+
+		 CERRAR(salida); CERRAR(personas); CERRAR(cuit);
+	  	
+
+
+	 FIN ACCION 	 
+
+
+ FIN ACCION
+
+
+
+

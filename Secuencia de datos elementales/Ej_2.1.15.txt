@@ -1,0 +1,57 @@
+Se desea saber la cantidad promedio de palabras que contienen las oraciones de una secuencia de caracteres.
+Supóngase que los puntos son siempre contiguos al último caracter de la palabra.
+La secuencia finaliza con una marca.
+
+
+ACCION Ej_2.1.15_Es
+	
+	AMBIENTE
+
+
+		VAR
+
+			sec : seuencia de caracteres;
+			v : caracter;
+			contPal , contOr : entero;
+
+
+
+			
+			ALGORITMO
+
+
+				cont :=0; ARR(sec); AVZ(sec , v);
+
+				MIENTRAS (v <> '*') HACER
+
+					MIENTRAS (v = ' ') HACER
+					 
+					  AVZ(sec , v);
+					 
+					 FIN MIENTRAS
+
+					contPal := contPal + 1;
+
+					MIENTRAS (v <> '.') ^ (v <> ' ') HACER
+
+						AVZ(sec , v);
+	
+					 FIN MIENTRAS
+
+				    SI (v = '.') ENTONCES
+				    	contOr := contOr + 1;
+				     FIN SI
+
+				    AVZ(sec , v); 
+
+					
+			     FIN MIENTRAS
+
+			     CERRAR(sec);
+
+			    ESCRIBIR("Promedio de palabras por oracion : " , contPal DIV contOr); 
+
+			 FIN ALGORITMO
+				
+
+ FIN ACCION

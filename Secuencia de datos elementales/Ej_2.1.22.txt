@@ -1,0 +1,81 @@
+La empresa Ideas Argentinas S.A. posee datos de sus empleados en dos secuencias de caracteres;
+la primera secuencia (Sec1) formada por los nombres (uno por persona) de los empleados separados por blancos
+y la segunda secuencia (Sec2) posee los números de documento de cada uno de los empleados
+(palabras de 8 dígitos numéricos). Ambas secuencias poseen la misma cantidad de datos,
+es decir al primer nombre de la primera secuencia le corresponde el primer número de documento
+de la segunda secuencia y así sucesivamente. La secuencia de números de documentos no posee espacios
+en blanco ni ningún otro tipo de caracter que separe un número de documento de otro.
+A la empresa le interesa tener en una nueva secuencia (Sec3) los datos de todas aquellas personas 
+que cumplan la condición de que el nombre se encuentre en una posición impar.
+La nueva secuencia debe generarse de la siguiente manera:
+el número de documento seguido (sin espacios) por una coma y luego (sin espacios) por el nombre
+y seguido al nombre un #.
+
+EJEMPLO sec3 [40263304,sebastian#320262304,jose#]
+
+ACCION 2.1.22_ES
+
+
+	AMBIENTE
+
+	VAR
+
+		sec1 , sec2 , sa3 : secuencia de caracteres;
+		v1 , v2 : caracter;
+		cont : entero;
+
+
+	ALGORITMO
+
+		ARR(sec1); ARR(sec2); CREAR(sec3); AVZ(sec1 , v1); AVZ(sec2 , v2); cont := 0;	
+
+
+		MIENTRAS NFDS(sec1) HACER
+
+	         	MIENTRAS (v1 = ' ') HACER     // Avanzamos los blancos
+				 	AVZ(sec1 , v1);
+				 FIN MIENTRAS 
+
+			cont := cont + 1;
+
+			SI (cont mod 2 <> 0) ENTONCES     //Verificamos posicion impar
+
+				PARA (i := 1 HASTA 8) HACER
+
+					ESC(sec3 , v2);
+					AVZ(sec2 , v2);
+
+				 FIN PARA
+     			 ESC(','); AVZ(sec2 , v2);
+
+				
+
+				MIENTRAS (sec1 <> ' ') HACER
+				 	ESC(sec3 , v1);
+				 	AVZ(sec1 , v1);
+				 FIN MIENTRAS 
+
+				ESC(sec3 , '#'); 
+
+			 SINO  
+
+			 	PARA (i:=1 HASTA 8) HACER   // Avanzamos las posiciones pares
+			 		AVZ(sec2 , v2);
+			 	 FIN PARA
+
+			 	MIENTRAS (v1 <> ' ') HACER
+			 	 	AVZ(sec1, v1);
+			 	 FIN MIENTRAS 
+
+			 FIN SI
+
+
+
+		 FIN MIENTRAS
+
+		 CERRAR(sec1); CERRAR(sec2); CERRAR(sec3);
+
+	 FIN ALGORITMO	
+
+
+ FIN ACCION

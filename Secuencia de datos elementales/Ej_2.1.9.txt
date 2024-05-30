@@ -1,0 +1,45 @@
+Se dispone de una secuencia de caracteres. Se desea determinar la cantidad de palabras que comienzan con la letra 'I'.
+
+
+ACCION Ej_2.1.9_ES
+	
+
+	AMBIENTE
+
+	 	sec : secuencia de caracteres;
+	 	v : caracter;
+	 	cont : entero;
+
+
+	ALGORITMO
+
+		cont := 0;  ARR(sec); AVZ(sec , v);
+
+		MIENTRAS NFDS(sec) HACER
+
+			MIENTRAS NFDS(sec) ^ (v = ' ') HACER
+			   AVZ(sec , v);
+			 FIN MIENTRAS									
+
+
+			SI NFDS(sec) ^ (v = 'I') ENTONCES
+				
+				cont := cont + 1;
+			 
+			 FIN SI 
+
+			MIENTRAS NFDS(sec) ^ (v <> ' ') HACER
+   			    AVZ(sec , v);
+		     FIN MIENTRAS		
+
+			  	
+
+
+		 FIN MIENTRAS
+
+		ESCRIBIR("La cantidad de palabras que comienzan con la letra I es : " , cont);
+
+
+	 FIN ALGORITMO 	
+
+ FIN ACCION

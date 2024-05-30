@@ -1,0 +1,109 @@
+Se posee 2 secuencias (S1 y S2) con las cuales se desea generar una nueva secuencia (SAL) donde se intercalen las palabras de las secuencias de entrada, de la siguiente manera: copiar de S1 aquellas palabras que empiezan y terminan con la misma letra y de S2 aquellas palabras que posean al menos un digito numérico y además estén en posición par.
+
+CONSIDERACIONES:
+================
+
+	* Cuando termina alguna de las dos secuencias se termina el algoritmo
+
+
+ACCION Ej_2.1.26_ES
+	
+	AMBIENTE
+
+	   VAR
+
+	   s1 , s1 , aux , aux2 , sal : secuencia de caracteres;  
+	   v1 , v2 , x , primLetra , ultLetra : caracter;
+	   cont : entero; 
+	   bol : logico;
+
+
+
+	   nums = ('0', '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9');
+
+
+	ALGORITMO
+
+		ARR(s1); ARR(s2); AVZ(s1); AVZ(s2); CREAR(sal);  cont := 0; bol := falso;
+
+
+		MIENTRAS NFDS(s1) ^ NFDS(s2) HACER
+			CREAR(aux);
+			MIENTRAS (v1 = ' ') HACER
+
+				AVZ(s1 , v1);
+
+			 FIN MIENTRAS
+
+
+			MIENTRAS (v2 = ' ') HACER
+
+				AVZ(s2 , v2);
+
+			 FIN MIENTRAS
+
+			primLetra := v1; cont := cont + 1;
+			
+			MIENTRAS (v1 <> ' ') HACER
+
+				ESC(aux , v1);
+				ultLetra := v1;
+				AVZ(s1 , v1);
+
+			 FIN MIENTRAS
+
+			 CERRAR(aux);
+
+			SI (primLetra = ultLetra) ^ (bol = falso) ENTONCES
+
+				ARR(aux); AVZ(aux , x);
+
+				MIENTRAS NFDS(aux) HACER
+					ESC(sal , x); AVZ(aux , x);
+				 FIN MIENTRAS 	
+				CERRAR(aux);
+
+
+		      	CREAR(aux2);  
+		        MIENTRAS (v2 <> ' ') HACER  
+
+			     	SI (v2 en nums) ENTONCES
+				    	bol := verdadero;
+			     	 FIN SI
+				
+				 ESC(aux2 , v2);
+				 AVZ(s2 , v2);
+
+			     FIN MIENTRAS
+			    CERRAR(aux2);
+
+	     	   SI (bol = verdadero) ^ (cont MOD 2 = 0) ENTONCES
+
+		      	 	ARR(aux2); AVZ(aux2 , x);
+ 
+     			 	MIENTRAS NFDS(aux2) HACER
+	     		 		ESC(sal , x); AVZ(aux2 , x);
+		     	 	 FIN MIENTRAS
+		     	 	bol := falso; 
+   
+	     		 FIN SI
+
+			   CERRAR(aux2);
+
+
+			 FIN SI
+
+			
+
+		 FIN MIENTRAS	
+
+
+
+	 FIN ALGORITMO    
+
+
+
+    
+
+
+ FIN ACCION

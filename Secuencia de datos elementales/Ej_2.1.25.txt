@@ -1,0 +1,67 @@
+Dada una secuencia texto de entrada que contiene palabras alfanuméricas,
+escribir un algoritmo que genere dos secuencias de salida.
+Una de ellas contendrá solo las palabras de la secuencia original que comienzan con vocal,
+ en las cuales se reemplazarán todas las vocales por ‘#’, por ejemplo: entrada 'avión1', salida '#v##n1' y la otra será una secuencia numérica en la que se almacenarán las cantidades de vocales que se encontraron en cada una de las palabras que cumplieron la condición. Por final de proceso se deberá informar el promedio de palabras por oración.
+
+ACCION EJ_2.1.25_ES
+
+	AMBIENTE
+
+	 VAR
+
+	 	sec sal1 : secuencia de caracteres; 
+	 	sec2 : secuencia de enteros;
+	 	v : caracter;
+	 	voc = ('a' , 'e' , 'i' , 'o' , 'u');
+	 	cantVocPal , cantPal , contOr : entero;
+
+
+	ALGORITMO
+
+		ARR(sec , v); CREAR(sal1); CREAR(sal2); cantPalCond := 0; cantPal := 0; contOr := 0;
+
+
+		MIENTRAS NFDS (sec) HACER
+
+			MIENTRAS(v = ' ') HACER
+
+				AVZ(sec , v);
+
+			 FIN MIENTRAS
+
+			 cantPal := cantPal + 1;
+
+			SI (v en voc) ENTONCES
+				cantVocPal := cantVocPal + 1; 
+				ESC(sal1 , '#'); AVZ(sec , v);
+
+				MIENTRAS (v <> ' ') ^ (v <> '.') HACER
+
+					SI (v en voc) ENTONCES
+						ESC(sal1 , '#'); cantVocPal := cantVocPal + 1; 
+					 FIN SI	
+
+					AVZ(sec , v); 
+				 
+				FIN MIENTRAS
+
+
+				ESC(sec2 , cantVocPal);
+				cantVocPal := 0;
+
+			 FIN SI 
+
+		    SI (v = '.') ENTONCES
+				contOr := contOr + 1; AVZ(sec , v);
+			 FIN SI
+
+		 FIN MIENTRAS
+
+		 CERRAR(sec); CERRAR(sal1); CERRAR(sal2);
+
+		 ESCRIBIR("Promedio de palabras por oracion: " , cantPal DIV cantOr);
+
+
+	 FIN ALGORITMO
+
+ FIN ACCION
