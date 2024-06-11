@@ -3,9 +3,9 @@ uses crt;
 
     type 
        
-       nodo =  Record
+       nodo =  Record                 //Definicion del tipo nodo
                  dato : string;
-                 prox : ^nodo;   
+                 prox : ^nodo;        //Puntero interno   
                 end;
 
 VAR 
@@ -15,7 +15,7 @@ VAR
  op : char;
 
 
-procedure cargaApilada;
+procedure cargaApilada;        //Procedimiento para carga apilada
 begin
     writeln('Ingrese un dato');
     readln(dato);
@@ -28,7 +28,7 @@ begin
 end;
 
 
-procedure recorrerLista;
+procedure recorrerLista;            //Procedimiento de recorrido de lista
 begin 
     if (prim = NIL) then 
       writeln('Lista vacia...')
@@ -49,7 +49,7 @@ BEGIN
     
     op := ' ';    prim := NIL;
     
-    repeat 
+    repeat         //Menu de opciones
         clrscr;
         writeln('=========================================');
         writeln('1 - Cargar pila');
